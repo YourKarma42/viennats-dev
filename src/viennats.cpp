@@ -17,13 +17,13 @@
 //#define VERBOSE
 
 //Dimensions
-#define DIMENSION_3
+//#define DIMENSION_3
 #define DIMENSION_2
 
 //Processes
 #define PROCESS_CONSTANT_RATES
 #define PROCESS_SIMPLE_DEPOSITION
-#define PROCESS_TiN_ALD
+/*#define PROCESS_TiN_ALD
 #define PROCESS_TiN_PEALD
 #define PROCESS_TiO2_ALD
 #define PROCESS_SF6_O2_PLASMA_ETCHING
@@ -35,7 +35,7 @@
 #define PROCESS_CFx_DEPOSITION
 #define PROCESS_HfO2_DEPOSITION
 #define PROCESS_HBr_O2_PLASMA_ETCHING
-#define PROCESS_N2_PLASMA_ETCHING
+#define PROCESS_N2_PLASMA_ETCHING         */
 #define PROCESS_NONLINEAR_DEPOSITION
 #define PROCESS_TWOSPECIES_DEPOSITION
 #define PROCESS_WET_ETCHING
@@ -148,6 +148,8 @@
 #include "message.h"
 #include "boundaries.h"
 
+//my stuff tmp
+#include "Geometry_custom.h"
 
 ///GridTraitsType Contains minimum and maximum indexes in each dimensional direction, boundary conditions, and the grid spacing
 template<int D>
@@ -289,6 +291,16 @@ void main_(ParameterType2& p2) {          //TODO changed from const to not const
       LevelSets.back().import_levelset(p.geometry_files[i]);
       msg::print_done();
     }
+  }
+  //my stuff tmp
+  else if(p.geometry_files[0].find(".json") != std::string::npos){
+
+    //TODO: write json parser
+
+    geometry::my_geom_test_func<D, GridTraitsType<D>, ParameterType2, LevelSetType>(GridProperties, grid, p, LevelSets);
+
+    exit(0);
+
   }
   else {
     //read in surfaces or volume and transform them to levelsets

@@ -336,11 +336,11 @@ namespace lvlset {
             const int D=LevelSetType::dimensions;
 
             if (initialized) {
-         for (int i=0;i<2*D*order;i++) it_neighbors[i].go_to_indices_sequential(it.start_indices());
+                for (int i=0;i<2*D*order;i++) it_neighbors[i].go_to_indices_sequential(it.start_indices());
             } else {
               for (int i=0;i<2*D;i++) {
-          vec<index_type,D> tv(index_type(0));
-          for (int j=0;j<order;j++) {
+                vec<index_type,D> tv(index_type(0));
+                for (int j=0;j<order;j++) {
             if (i<D) tv[i]++; else tv[i-D]--;
             it_neighbors.push_back(typename LevelSetType::const_iterator_runs_offset(LS, tv,it.start_indices()));
           }

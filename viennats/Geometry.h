@@ -1341,10 +1341,12 @@ namespace geometry {
         }
       }
 
+
       //Set the level set GridProperties
       GridProperties = GridTraitsType(grid_min, grid_max, bnc, p.grid_delta);
       //Generate the grid with the GridProperties
       grid = lvlset::grid_type<GridTraitsType>(GridProperties);
+
 
       msg::print_start("Distance transformation...");
 
@@ -1414,10 +1416,13 @@ namespace geometry {
         }
       }
 
+
       //Set the level set GridProperties
       GridProperties = GridTraitsType(grid_min, grid_max, bnc, p.grid_delta);
       //Generate the grid with the GridProperties
       grid = lvlset::grid_type<GridTraitsType>(GridProperties);
+
+
 
       //!Transform the input volume geometry to surfaces and interfaces "TransformGeometryToSurfaces(...)"
       msg::print_start("Extract surface and interfaces...");
